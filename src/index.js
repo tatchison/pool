@@ -1,4 +1,5 @@
 import Ball from './ball';
+import * as Vector from './vector';
 
 var canvas = document.createElement('canvas');
 canvas.width = 760;
@@ -37,6 +38,14 @@ function update() {
       if(900 > Math.pow(a.x-b.x, 2) + Math.pow(a.y-b.y, 2)) {
         balls[i].setColor('red');
         balls[j].setColor('red');
+		var diff = Vector.subtract(a,b);
+		var angle = Math.atan2(diff.x, diff.y);
+		var c = balls[i].getVelocity();
+		var d = balls[j].getVelocity();
+		c = Vector.rotate(c, angle);
+		d = Vector.rotate(d, angle);
+		balls[i].setVelocity(c);
+		balls[j].setVelocity(d);
       } else {
         balls[i].setColor('gray');
         balls[j].setColor('red');

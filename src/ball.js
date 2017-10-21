@@ -16,6 +16,7 @@ export default class Ball {
     this.color = 'gray';
     this.pocketed = false;
     this.getPosition.bind(this);
+	this.getVelocity.bind(this);
     this.setColor.bind(this);
   }
 
@@ -24,6 +25,13 @@ export default class Ball {
       x: this.position.x,
       y: this.position.y
     };
+  }
+  
+  getVelocity(){
+	  return{
+		  x: this.velocity.x,
+		  y: this.velocity.y
+	  };
   }
 
   setVelocity(velocity) {
